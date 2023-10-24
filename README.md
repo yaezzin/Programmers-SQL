@@ -1,8 +1,5 @@
 # SQL-ProblemSolving
 
-- [Programmers](https://github.com/yaezzin/SQL-Study/tree/main/Programmers/)  
-- [LeetCode](https://github.com/yaezzin/SQL-Study/tree/main/LeetCode)
-
 ## Note
 
 |Command|Description|
@@ -21,17 +18,22 @@
 |`SUM(A)`|A의 합을 리턴|
 |`MAX(A)`|- A의 최대값을 리턴 </br> - DATETIME 컬럼을 넣을 경우 가장 최신 날짜를 리턴|
 |`MIN(A)`|- A의 최솟값을 리턴 </br> - DATETIME 컬럼을 넣을 경우 가장 오래된 날짜를 리턴|
-|`ROUND(N, M)` |- 숫자 N을 소수점 M째 자리에서 반올림 </br> - 반올림할 위치에 아무것도 적지 않으면 첫째 자리에서 반올림을 하며, 1을 적을경우부터 둘째자리에서 반올림|
+|`ROUND(N, M)` |- 숫자(컬럼) N을 소수점 M째 자리에서 반올림 </br> - 반올림할 위치에 아무것도 적지 않으면 첫째 자리에서 반올림을 하며, 1을 적을경우부터 둘째자리에서 반올림|
+|`CEIL(N)`|숫자(컬럼) N의 소수점 값 상관없이 올림|
+|`FLOOR(N)`|숫자(컬럼) N의 소수점 값 상관없이 내림|
+|`TRUNCATE(N, M)`|- 숫자(컬럼) N을 M번째짜리 자릿수 '아래'로 버림! </br> - 자릿수를 지정하지 않으면 오류 발생!|
 |`DATE_FORMAT(D, F)` | - 날짜 D를 형식 F에 맞게 리턴 </br> - ex) **DATE_FORMAT(NOW(),'%Y-%m-%d')**|
 |`YEAR(D)`|날짜 D의 '연도' 값을 리턴|
 |`MONTH(D)`|날짜 D의 '월' 값을 리턴|
 |`DAYOFMONTH(NOW()`|날짜 D의 '일' 값을 리턴|
 
-#### 쿼리 실행 순서
+#### ⭐ 쿼리 실행 순서
 
-FROM - WHERE - GROUP BY - SELECT - ORDER BY
+* `FROM` - `WHERE` - `GROUP BY` - `HAVING` - `SELECT` - `ORDER BY`
 
+#### ⭐ 쿼리 적는 순서
 
+* `SELCET` - `FROM` - `WHERE` - `GROUP BY` - `HAVING` - `ORDER BY` - `LIMIT`
 
 
 ## GROUP BY
@@ -65,12 +67,16 @@ HAVING COUNT(USER_ID) > 1 AND COUNT(PRODUCT_ID) > 1
 
 ## WHERE
 
-### NOT
+|NOT | Description         |
+|----|---------------------|
+|```!=``` 또는 ```NOT =```| - 조건이 하나인 경우에는 != 또는 NOT col = val 를 사용하자! </br> - 조건을 여러 개 명시할 경우 OR를 사용하는데 OR의 비교가 선형적이라 조건이 많아질수록 효율이 떨어짐|
+|```NOT IN()```| - IN에 명시한 값들을 정렬하고 이진 탐색으로 값을 찾기 때문에 훨씬 효율적|
 
-1. ```!=``` 또는 ```NOT =```
-* 조건이 하나인 경우에는 != 또는 NOT col = val 를 사용하자!
-* 조건을 여러 개 명시할 경우 OR를 사용하는데 OR의 비교가 선형적이라 조건이 많아질수록 효율이 떨어짐
-  
-2. ```NOT IN```
-* IN에 명시한 값들을 정렬하고 이진 탐색으로 값을 찾기 때문에 훨씬 효율적
+## UNION
+
+> 둘 이상의 테이블의 결과를 결합
+
+* `UNION`의 결과 집합에는 중복 행이 포함되지 않지만 `UNION ALL`의 결과 집합은 두 테이블의 모든 행을 반환(중복값 포함)
+
+
 
